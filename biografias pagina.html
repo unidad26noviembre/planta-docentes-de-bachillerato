@@ -1,0 +1,714 @@
+﻿﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docentes de Bachillerato</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #0d1b4c, #1d2f7a);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* LOGO DIFUMINADO DE FONDO */
+body::before{
+    content: "";
+    position: fixed;
+    top: 58%;
+    left: 50%;
+    width: 700px;
+    height: 700px;
+
+    transform: translate(-50%, -50%);
+
+    background-image: url('imagenes/logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    opacity: 0.95;
+
+    z-index: -1;
+}
+
+/* TITULO */
+.titulo{
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.titulo h1{
+    color: #ffd700;
+    font-size: 42px;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+.titulo h2{
+    color: white;
+    font-size: 22px;
+    font-weight: normal;
+    margin-top: 0;
+    letter-spacing: 1px;
+}
+.titulo h3{
+    color: #ffd700;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+/* CONTENEDOR */
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* TARJETAS DOCENTES */
+.docente{
+    background: white;
+    width: 220px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: 0.3s;
+    border-top: 6px solid #ffd700;
+}
+
+.docente:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+}
+
+/* IMAGENES */
+.docente img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* NOMBRES */
+.nombre{
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #0d1b4c;
+    background: #ffffff;
+}
+
+.titulo-funcionarios{
+    width: 100%;
+    text-align: center;
+    margin: 60px 0 25px 0;
+}
+
+.titulo-funcionarios h1{
+    color: #ffd700;
+    font-size: 38px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+/* MODAL */
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+/* CONTENIDO MODAL */
+.modal-contenido{
+    background: white;
+    width: 350px;
+    margin: 3% auto;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    border-top: 8px solid #ffd700;
+}
+
+/* FOTO MODAL */
+.modal-contenido img{
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #0d1b4c;
+}
+
+/* BOTON CERRAR */
+.cerrar{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #c40000;
+    font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="titulo">
+
+    <h1>Planta de docentes de bachillerato</h1>
+
+    <h2>Unidad Educativa "26 de Noviembre"</h2>
+
+     <h3>Docentes de Bachillerato</h3>
+
+</div>
+
+<div class="contenedor">
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+    'Mgs. Marcia Condo',
+    'Docente de Matemáticas',
+    'Pertenece a esta institucion desde  2016, con 15 años de experiencia. Es Licenciada en Ciencias de la Educación, mención Matemática, y Magíster en Educación Básica. Se destaca por su compromiso, ética profesional y por fomentar el pensamiento lógico y crítico en sus estudiantes.',
+    'imagenes/marcia.jpg'
+)">
+        <img src="imagenes/marcia.jpg" alt="Docente">
+        <div class="nombre">Mgs. Marcia Condo</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+    'Lic. Ana Chávez',
+    'Docente de Filosofía y Biología',
+    'Docente de Filosofía y Biología en la Unidad Educativa 26 de Noviembre, con 14 años de experiencia docente. Es Licenciada por la Universidad Estatal de Guayaquil y Magíster en Educación. Se destaca por su compromiso, responsabilidad y por fomentar valores como el respeto, la empatía y la solidaridad.',
+    'imagenes/ana.jpg'
+)">
+
+        <img src="imagenes/ana.jpg" alt="Docente">
+        <div class="nombre">Lic.Ana Chávez</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Pablo Largo',
+        'Docente de Informática y Matemáticas.',
+        'docente de la Unidad Educativa 26 de Noviembre desde 2007, imparte Programación, Sistemas, Diseño Web, Soporte Técnico y Matemáticas. Es Magíster en Educación Secundaria con especialidad en Matemáticas, destacándose por su disciplina, responsabilidad y compromiso con la enseñanza.',
+        'imagenes/pablo.jpg'
+    )">
+
+        <img src="imagenes/pablo.jpg" alt="Docente">
+        <div class="nombre">Mgs. Pablo Largo</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Glenda toro',
+        'Docente de Informática e Investigación Científica.',
+        'Docente de Informática e Investigación Científica en la Unidad Educativa 26 de Noviembre desde 2017. Es Licenciada en Ciencias de la Educación con mención en Informática y cuenta con maestrías en Educación de Bachillerato y Liderazgo Educativo.',
+        'imagenes/glenda.jpg'
+    )">
+
+        <img src="imagenes/glenda.jpg" alt="Docente">
+        <div class="nombre">Mgs. Glenda toro</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs.Yesmania Jaramillo',
+        'Docente de Ciudadanía para la Ciudadania.',
+        'Brinda sus servicios profesionales desde el 2023 Imparte Educación para la Ciudadanía y Filosofía. Es Ingeniera Comercial por la Universidad Tecnologica Empresarial de Guayaquil y Magíster en Educación Básica. Se destaca por su vocación docente y por integrar conocimientos sobre leyes y reformas en el aprendizaje de sus estudiantes',
+        'imagenes/yasmania.jpg'
+    )">
+
+        <img src="imagenes/yasmania.jpg" alt="Docente">
+        <div class="nombre">Mgs.Yesmania Jaramillo</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Lissette Jara',
+        'Docente de Matemáticas.',
+        'Docente de esta institución  desde 2022.  Economista y Magíster en Pedagogía por la Universidad Nacional de Loja. Se caracteriza por su cercanía con los estudiantes y por fomentar valores como la perseverancia, la honestidad y el esfuerzo dentro del aula.',
+        'imagenes/lissette.jpg'
+    )">
+
+        <img src="imagenes/lissette.jpg" alt="Docente">
+        <div class="nombre">Mgs. Lissette Jara</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Dra. Lorena Delgado',
+        'Docente de Lengua y Literatura.',
+        'Pertenece a esta institucion  desde 2021, Doctora en Ciencias de la Educación y Magíster en Pedagogía. Se destaca por su pasión por la literatura y por fomentar valores en sus estudiantes.',
+        'imagenes/lorena.jpg'
+    )">
+
+        <img src="imagenes/lorena.jpg" alt="Docente">
+        <div class="nombre">Dra. Lorena Delgado</div>
+    </div>
+
+    
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Lic.Lourdes Durán',
+        'Docente de Historia, Filosofía y Educación para la Ciudadanía',
+        'Brinda sus servicios profesionales desde 2014. Licenciada en Historia y Ciencias Sociales, destacada por su compromiso, responsabilidad y enseñanza participativa en la formación estudiantil.',
+        'imagenes/lourdes.jpg'
+    )">
+
+        <img src="imagenes/lourdes.jpg" alt="Docente">
+        <div class="nombre">Lic.Lourdes Durán</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Andrea García',
+        'Docente de Física',
+        'Trabaja en la  Unidad Educativa “26 de Noviembre” desde 2012. Posee un máster en Liderazgo Educativo y se destaca por su creatividad, entusiasmo y compromiso con la formación integral de los estudiantes.',
+        'imagenes/andrea.jpg'
+    )">
+
+        <img src="imagenes/andrea.jpg" alt="Docente">
+        <div class="nombre">Mgs. Andrea García</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Lic.Diego Freire',
+        'Docente de Educación Fisica',
+        'Forma parte de la Unidad Educativa “26 de Noviembre” desde 2017. Licenciado en Educación Física, mejorando sus estudios obteniendo un titulo en un Maestria en Educación Física, destacado por su disciplina, compromiso y dedicación en la formación de los estudiantes, promoviendo valores como el respeto, la puntualidad y la perseverancia.',
+        'imagenes/diego.jpg'
+    )">
+
+        <img src="imagenes/diego.jpg" alt="Docente">
+        <div class="nombre">Lic.Diego Freire</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Omar Ordoñez',
+        'Informática y Sistemas.',
+        'Docente del área de Informática en la Unidad Educativa 26 de Noviembre desde 2012, con 15 años de experiencia. Imparte Programación, Diseño y Sistemas. Es Técnico, Tecnólogo, Licenciado y Magíster en Informática por la Universidad Estatal de Guayaquil. Se destaca por enseñar de forma práctica y apoyar constantemente a sus estudiantes.',
+        'imagenes/omar.jpg'
+    )">
+
+        <img src="imagenes/omar.jpg" alt="Docente">
+        <div class="nombre">Mgs. Omar Ordoñez</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Geovanny Armijos',
+        'Informática y Sistemas.',
+        'Docente de la Unidad Educativa 26 de Noviembre desde 2013, con 24 años de experiencia. Imparte Programación, Sistemas, Artística y Lengua. Es Licenciado en Ciencias de la Educación con posgrado en Pedagogía. También ha desempeñado cargos como rector y vicerrector, destacándose por su liderazgo, carisma y compromiso con la educación.',
+        'imagenes/manuelarmijos.jpg'
+    )">
+
+        <img src="imagenes/manuelarmijos.jpg" alt="Docente">
+        <div class="nombre">Mgs.Geovanny Armijos</div>
+    </div>
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Karmi Zúñiga',
+        'Docente de Lengua y Literatura y Filosofía',
+        'Pertenece a la Unidad Educativa “26 de Noviembre” desde el año 2024. Es Licenciada en Lengua y Literatura por la Universidad Nacional de Loja  destacandose por fomentar la responsabilidad y la perseverancia en sus estudiantes.',
+        'imagenes/karmi.jpg'
+    )">
+        <img src="imagenes/karmi.jpg" alt="Docente">
+        <div class="nombre">Mgs. Karmi Zúñiga</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Alicia Sarmiento',
+        'Docente de Contabilidad y Emprendimiento',
+        'Brinda sus servicios profesionales en la institución desde el año 2022. Es Licenciada en Contabilidad con mención en Emprendimiento y Gestión por la Universidad Nacional de Loja ademas posee una  maestría en Orientación Educativa y Familiar.',
+        'imagenes/maria-murillo.jpg'
+    )">
+        <img src="imagenes/maria-murillo.jpg" alt="Docente">
+        <div class="nombre">Mgs. Alicia Sarmiento</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Ing. Vinicio Sánchez',
+        'Docente de Emprendimiento y Gestión - Contabilidad de Costos',
+        'Brinda sus servicios profesionales en la institución desde el año 2022. Es Licenciada en Contabilidad con mención en Emprendimiento y Gestión por la Universidad Nacional de Loja y posee una maestría en Orientación Educativa y Familiar.',
+        'imagenes/vinicio.jpg'
+    )">
+        <img src="imagenes/vinicio.jpg" alt="Docente">
+        <div class="nombre">Ing. Vinicio Sánchez</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Dennis Tinoco',
+        'Inspector General - Docente de Química ',
+        'Pertenece a la Unidad Educativa “26 de Noviembre” desde el año 2025. Es Ingeniero en Industrias Agropecuarias y cuenta con formación de cuarto nivel en Educación.',
+        'imagenes/deniss.jpg'
+    )">
+        <img src="imagenes/deniss.jpg" alt="Docente">
+        <div class="nombre">Mgs. Dennis Tinoco</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Lic. Fabián Macanchí',
+        'Docente de Física y Matemáticas',
+        'Brinda sus servicios profesionales en la institución desde el año 2012. Es Licenciado en Ciencias de la Educación por la Universidad Tecnológica Equinoccial, especializado en Física y Matemáticas.',
+        'imagenes/fabian.jpg'
+    )">
+        <img src="imagenes/fabian.jpg" alt="Docente">
+        <div class="nombre">Lic. Fabián Macanchí</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Tania Loaiza',
+        'Docente de Estudios Sociales',
+        'Forma parte de la comunidad educativa como profesional comprometida con la formación estudiantil. Es Licenciada en Contabilidad y Auditoría por la Universidad Nacional de Loja y posee una maestría de la Universidad Rey Juan Carlos de España.',
+        'imagenes/tania_loaisa.jpg'
+    )">
+        <img src="imagenes/tania_loaisa.jpg" alt="Docente">
+        <div class="nombre">Mgs. Tania Loaiza</div>
+    </div>
+
+    
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Lic. Lorena Macas',
+        'Docente de Educación Física',
+        'Brinda sus servicios profesionales en la institución desde el año 2024. Es Licenciada en Ciencias de la Educación con mención en Educación Física por la Universidad Técnica de Machala.',
+        'imagenes/lorena1.jpg'
+    )">
+        <img src="imagenes/lorena1.jpg" alt="Docente">
+        <div class="nombre">Lic. Lorena Macas</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Luis Ordóñez',
+        'Docente de Física y Matemática',
+        'Forma parte de la institución desde el año 2017. Realizó sus estudios en Fisicomatemática en la Universidad Técnica Particular de Loja y obtuvo una maestría en Gerencia y Liderazgo Educacional.',
+        'imagenes/Luis.jpg'
+    )">
+        <img src="imagenes/Luis.jpg" alt="Docente">
+        <div class="nombre">Mgs. Luis Ordóñez</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. María Ordóñez',
+        'Docente de Ciencias Naturales y Biología',
+        'Pertenece a la Unidad Educativa “26 de Noviembre” desde el año 2016. Estudió Ciencias de la Educación en la Universidad Técnica Particular de Loja y posee una maestría en Educación, Tecnología e Innovación.',
+        'imagenes/maria1.jpg'
+    )">
+        <img src="imagenes/maria1.jpg" alt="Docente">
+        <div class="nombre">Mgs. María Ordóñez</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Diana Ordóñez',
+        'Química',
+        'Cuenta con más de doce años de experiencia docente. Se caracteriza por impulsar el pensamiento crítico y la aplicación de la ciencia en la vida cotidiana. Además, fomenta el respeto, la responsabilidad y el trabajo colaborativo dentro del ambiente educativo.',
+        'imagenes/diana.jpg'
+    )">
+        <img src="imagenes/diana.jpg" alt="Docente">
+        <div class="nombre">Mgs. Diana Ordóñez</div>
+    </div>
+
+    
+    
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Lic. Yadira Morocho',
+        'Docente de Matemática, Estadística, Dibujo Técnico y Filosofía',
+        'Forma parte de la institución desde el año 2011. Es Licenciada en Ciencias de la Educación mención Matemática por la Universidad Tecnológica Equinoccial.',
+        'imagenes/yadira1.jpg'
+    )">
+        <img src="imagenes/yadira.jpg" alt="Docente">
+        <div class="nombre">Lic. Yadira Morocho</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. María Murillo',
+        'Docente de Lengua y Literatura',
+        'Brinda sus servicios profesionales en la institución desde el año 2014. Es Licenciada en Ciencias de la Educación con mención en Lengua y Literatura por la UTPL y posee maestrías en Literatura Juvenil y Formación de Profesores.',
+        'imagenes/lucia.jpg'
+    )">
+        <img src="imagenes/lucia.jpg" alt="Docente">
+        <div class="nombre">Mgs. María Murillo</div>
+    </div>
+
+   
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. María Ramírez',
+        'Docente de Emprendimiento y Contabilidad.',
+        'Pertenece a esta institución desde el año 2024. Ingeniera en Banca y Finanzas por la Universidad Nacional de Loja ademas posee una maestría en Educación Básica por la Universidad Estatal de Milagro. Además, ha realizado diversos cursos de actualización académica relacionados con educación y finanzas.',
+        'imagenes/maria.jpg'
+    )">
+        <img src="imagenes/maria.jpg" alt="Docente">
+        <div class="nombre">Mgs. María Ramírez</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Lic. Paola Valle',
+        'Docente de Educación Artística.',
+        'Pertenece a esta institución desde el año 2001. Es Tecnóloga en Programación de Sistemas por la Universidad San Antonio de Machala y Licenciada en Educación Básica por la Universidad Bolivariana del Ecuador. Cuenta con una amplia trayectoria en el ámbito educativo y artístico.',
+        'imagenes/paola.jpg'
+    )">
+        <img src="imagenes/paola.jpg" alt="Docente">
+        <div class="nombre">Lic. Paola Valle</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Tanya Preciado',
+        'Docente de Inglés.',
+        'Pertenece a esta institución desde el año 2014. Es Licenciada en Ciencias de la Educación, mención Inglés por la Universidad Técnica Particular de Loja, mejorando sus estudios academicos realizo una  maestría obtenida en la Universidad Estatal de Milagro. También ha participado en diversas capacitaciones y programas internacionales relacionados con la enseñanza del idioma inglés',
+        'imagenes/tania.jpg'
+    )">
+        <img src="imagenes/tania.jpg" alt="Docente">
+        <div class="nombre">Mgs. Tanya Preciado</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Lic. Ronal Romero',
+        'Docente de Lengua y Literatura.',
+        'Forma parte de la unidad educativa desde el año 2021. Es Licenciado en Lengua y Literatura por la Universidad Técnica Particular de Loja y cuenta con una especialización en Innovación y Liderazgo Educativo. Su formación se orienta al fortalecimiento de la lectura, la escritura y el pensamiento crítico..',
+        'imagenes/ronal.jpg'
+    )">
+        <img src="imagenes/ronal.jpg" alt="Docente">
+        <div class="nombre">Lic. Ronal Romero</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Gladys Tituana',
+        'Docente de Geología, Química y Biología.',
+        'Integra el personal docente y directivo de esta institución desde el año 1995. Es Licenciada por la Universidad Técnica Particular de Loja y posee un Máster de Formación de Profesorado de Secundaria en Geología, Química y Biología por la Universidad Autónoma de Madrid. Además, ha desempeñado importantes cargos directivos.',
+        'imagenes/loaisa.jpg'
+    )">
+        <img src="imagenes/loaisa.jpg" alt="Docente">
+        <div class="nombre">Mgs. Gladys Tituana</div>
+    </div>
+
+<!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Marianela Abad',
+        'Docente de Anatomía',
+        'Posee una trayectoria de 20 años en el ámbito educativo y forma parte de esta institución desde hace 4 años. Es Licenciada en Ciencias de la Educacion, Quimica y Biologia.',
+        'imagenes/marianela.jpg'
+    )">
+        <img src="imagenes/marianela.jpg" alt="Docente">
+        <div class="nombre">Mgs. Marianela Abad</div>
+    </div>
+
+<!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Claudia Aguilar',
+        'Docente de Lengua y Literatura.',
+        'Desde el año 2014 forma parte de la Unidad Educativa 26 de Noviembre. Es Licenciada en Ciencias de la Educación con mención en Lengua Castellana y Literatura por la Universidad Nacional de Loja y posee una Maestría en Gestión y Liderazgo Educativo por la Universidad de Especialidades Espíritu Santo (UEES). Actualmente se desempeña como Directora de la institución, cargo que ejerce con responsabilidad y compromiso.',
+        'imagenes/claudia.jpg'
+    )">
+        <img src="imagenes/claudia.jpg" alt="Docente">
+        <div class="nombre">Mgs. Claudia Aguilar</div>
+    </div>
+
+<!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Mayra Armijos',
+        'Docente de Gestión Financiera y Contable y Educación Artística',
+        'Forma parte de la Unidad Educativa 26 de Noviembre desde el año [AÑO]. Cuenta con 10 años de experiencia docente. Se destaca por su compromiso, responsabilidad y dedicación en la formación integral de sus estudiantes.',
+        'imagenes/maira.jpg'
+    )">
+        <img src="imagenes/maira.jpg" alt="Docente">
+        <div class="nombre">Mgs. Mayra Armijos</div>
+    </div>
+
+<!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs.Mery Asanza',
+        'Materias',
+        'Biografia',
+        'imagenes/meri.jpg'
+    )">
+        <img src="imagenes/meri.jpg" alt="Docente">
+        <div class="nombre">Mgs. Mery Asanza</div>
+    </div>
+
+<!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Jose Camacho',
+        'Docente de Física, Química y Matemáticas.',
+        'Forma parte del personal docente desde el año 2020. Es Ingeniero en Industrias Pecuarias por la Escuela Superior Politécnica de Chimborazo (ESPOCH) y posee una Maestría en Gerencia Educacional por la Universidad Yacambú de Venezuela. Se caracteriza por su estilo dinámico y cercano en el proceso de enseñanza-aprendizaje',
+        'imagenes/camacho.jpg'
+    )">
+        <img src="imagenes/camacho.jpg" alt="Docente">
+        <div class="nombre">Mgs. Jose Camacho</div>
+    </div>
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'lic. Diego Torres',
+        'Docente de Quimica, Biologia y Anatomia',
+        'Docente de la Unidad Educativa “26 de Noviembre” desde el año 2016. Licenciado en Ciencias de la Educación por la Universidad Estatal de Cuenca. Posee formación académica en el área de Ciencias y ha impartido las asignaturas de Química, Biología y Anatomía. En el año 2025 desempeñó el cargo de Vicerrector de Educación Básica Superior.',
+        'imagenes/diego_torres.jpg'
+    )">
+        <img src="imagenes/diego_torres.jpg" alt="Docente">
+        <div class="nombre">Lic. Diego Torres</div>
+    </div>
+
+ <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Lic. José Chamba',
+        'Docente de Emprendimiento y Gestión',
+        'Consta con 12 años de experiencia en el Ministerio de Educación, actualmente imparte la asignatura de Emprendimiento y Gestión en nuestra honorable Unidad Educativa, consta con una Licenciatura en Contador Público Auditor',
+        'imagenes/chamba.jpg'
+    )">
+        <img src="imagenes/chamba.jpg" alt="Docente">
+        <div class="nombre">Lic. José Chamba</div>
+    </div>
+
+<!-- DOCENTE -->
+<div class="docente" onclick="mostrarInfo(
+    'Mgs.Blanca Loja',
+    'Docente de Filosofía e Investigación',
+    'Docente de Filosofía e Investigación en la Unidad Educativa 26 de Noviembre desde el año 2020. Es Licenciada en Ciencias de la Educación y Magíster en Pedagogía. Posee más de 12 años de experiencia docente y destaca por su compromiso, creatividad y la promoción de valores como el respeto, la responsabilidad y la perseverancia.',
+    'imagenes/blanca.jpg'
+)">
+    <img src="imagenes/blanca.jpg" alt="Docente">
+    <div class="nombre">Mgs.Blanca Loja </div>
+</div>
+
+<!-- DOCENTE -->
+<div class="docente" onclick="mostrarInfo(
+    'Mgs. Jorge Inga',
+    'Docente de matemática',
+    'Lleva impartiendo clases en la Institución desde el año 2014, es Ingeniero en Electronica con mención en Telecomunicaciones en la Universidad Politecnica Salesiana de Cuenca, mejorando su nivel educativo realiza una  Maestria en Didactica de las matemáticas en la Universidad Internacional de La Rioja, España',
+    'imagenes/jorge_inga.jpg'
+)">
+    <img src="imagenes/jorge_inga.jpg" alt="Docente">
+    <div class="nombre">Mgs. Jorge Inga</div>
+</div>
+
+<!-- DOCENTE -->
+<div class="docente" onclick="mostrarInfo(
+    'Mgs. Vanessa Preciado',
+    'Docente de Ingles',
+    'Tiene una experiencia dentro de MINEDEC actualmente imparte la asignatura de ingles en la Unidad Educativa',
+    'imagenes/vanessa_preciado.jpg'
+)">
+    <img src="imagenes/vanessa_preciado.jpg" alt="Docente">
+    <div class="nombre">Mgs. Vanessa Preciado</div>
+</div>
+
+
+    
+
+
+<div class="titulo-funcionarios">
+    <h1>Personal Administrativo y de Servicio</h1>
+</div>
+
+<div class="contenedor">
+
+     <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Marvin Ochoa',
+        'Consejería Estudiantil (DECE)',
+        'Pertenece a la institución desde el año 2025. Es Licenciado en Psicología por la Universidad Técnica de Manabí y posee una maestría en Psicología Clínica con especialización en Atención de Emergencias y Desastres.',
+        'imagenes/marvin.jpg'
+    )">
+        <img src="imagenes/marvin.jpg" alt="Docente">
+        <div class="nombre">Mgs. Marvin Ochoa</div>
+    </div>
+<!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Psic. Patricio Suca',
+        'Orientación Psicológica',
+        'Pertenece a la institución desde el año 2017. Es Licenciado en Psicología por la Universidad Peruana Unión de Lima, Perú, y posee estudios de maestría y diplomados en el área educativa.',
+        'imagenes/patricio.jpg'
+    )">
+        <img src="imagenes/patricio.jpg" alt="Docente">
+        <div class="nombre">Psic. Patricio Suca</div>
+    </div>
+<!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'lic. Manuel Gálvez',
+        'Conserje Institucional',
+        'Conserje de la Unidad Educativa “26 de Noviembre” desde el año 2000. Cuenta con 25 años de servicio y se destaca por su responsabilidad, dedicación y compromiso con el cuidado institucional. Promueve valores como la disciplina, el orden y el aseo, siendo apreciado por su amabilidad y cercanía con la comunidad educativa.',
+        'imagenes/manuel.jpg'
+    )">
+
+        <img src="imagenes/manuel.jpg" alt="Docente">
+        <div class="nombre">lic. Manuel Gálvez</div>
+    </div>
+
+</div>
+
+<!-- VENTANA EMERGENTE -->
+<div class="modal" id="modal">
+
+    <div class="modal-contenido">
+
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+
+        <img id="fotoDocente" src="">
+
+        <h2 id="nombreDocente"></h2>
+
+        <p id="materiaDocente"></p>
+
+        <p id="infoDocente"></p>
+
+    </div>
+
+</div>
+
+<script>
+
+function mostrarInfo(nombre, materia, info, foto){
+
+    document.getElementById("nombreDocente").innerText = nombre;
+
+    document.getElementById("materiaDocente").innerText = materia;
+
+    document.getElementById("infoDocente").innerText = info;
+
+    document.getElementById("fotoDocente").src = foto;
+
+    document.getElementById("modal").style.display = "block";
+}
+
+function cerrarModal(){
+
+    document.getElementById("modal").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
